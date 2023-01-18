@@ -704,6 +704,8 @@ static void benchmark_init(void)
     lv_style_init(&style_common);
 
     lv_obj_update_layout(scr);
+
+    lv_timer_reset_idle();
 }
 
 
