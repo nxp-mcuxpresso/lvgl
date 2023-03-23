@@ -552,6 +552,8 @@
 
 #define LV_USE_MSGBOX     1
 
+#define LV_USE_RADIOBTN   1
+
 #define LV_USE_SPAN       1
 #if LV_USE_SPAN
     /*A line text can contain maximum num of span descriptor */
