@@ -534,6 +534,8 @@
     #define LV_USE_CALENDAR_HEADER_DROPDOWN 1
 #endif  /*LV_USE_CALENDAR*/
 
+#define LV_USE_CAROUSEL   1
+
 #define LV_USE_CHART      1
 
 #define LV_USE_COLORWHEEL 1

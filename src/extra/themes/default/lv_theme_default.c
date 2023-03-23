@@ -129,6 +129,10 @@ typedef struct {
     lv_style_t colorwheel_main;
 #endif
 
+#if LV_USE_CAROUSEL
+    lv_style_t outline_focus, outline_disabled;
+#endif
+
 #if LV_USE_MENU
     lv_style_t menu_bg, menu_cont, menu_sidebar_cont, menu_main_cont, menu_page, menu_header_cont, menu_header_btn,
                menu_section, menu_pressed, menu_separator;
@@ -608,6 +612,17 @@ static void style_init(void)
 #if LV_USE_COLORWHEEL
     style_init_reset(&styles->colorwheel_main);
     lv_style_set_arc_width(&styles->colorwheel_main, lv_disp_dpx(theme.disp, 10));
+#endif
+
+#if LV_USE_CAROUSEL
+    style_init_reset(&styles->outline_focus);
+    lv_style_set_outline_color(&styles->outline_focus, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_outline_width(&styles->outline_focus, OUTLINE_WIDTH);
+    lv_style_set_outline_opa(&styles->outline_focus, LV_OPA_50);
+    style_init_reset(&styles->outline_disabled);
+    lv_style_set_outline_color(&styles->outline_disabled, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_outline_width(&styles->outline_disabled, OUTLINE_WIDTH);
+    lv_style_set_outline_opa(&styles->outline_disabled, LV_OPA_50);
 #endif
 
 #if LV_USE_MSGBOX
@@ -1179,6 +1194,20 @@ static void theme_apply(lv_theme_t * th, lv_obj_t * obj)
     else if(lv_obj_check_type(obj, &lv_tileview_tile_class)) {
         lv_obj_add_style(obj, &styles->scrollbar, LV_PART_SCROLLBAR);
         lv_obj_add_style(obj, &styles->scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+    }
+#endif
+
+#if LV_USE_CAROUSEL
+    else if(lv_obj_check_type(obj, &lv_carousel_class)) {
+        lv_obj_add_style(obj, &styles->scr, 0);
+        lv_obj_add_style(obj, &styles->scrollbar, LV_PART_SCROLLBAR);
+        lv_obj_add_style(obj, &styles->scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+    }
+    else if(lv_obj_check_type(obj, &lv_carousel_element_class)) {
+        lv_obj_add_style(obj, &styles->scrollbar, LV_PART_SCROLLBAR);
+        lv_obj_add_style(obj, &styles->scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+        lv_obj_add_style(obj, &styles->outline_focus, LV_STATE_FOCUSED);
+        lv_obj_add_style(obj, &styles->outline_disabled, LV_STATE_DEFAULT);
     }
 #endif
 
