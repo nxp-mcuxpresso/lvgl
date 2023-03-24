@@ -574,6 +574,8 @@
 
 #define LV_USE_TILEVIEW   1
 
+#define LV_USE_VIDEO      1
+
 #define LV_USE_WIN        1
 
 /*-----------

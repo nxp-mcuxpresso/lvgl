@@ -1520,6 +1520,18 @@
     #endif
 #endif
 
+#ifndef LV_USE_VIDEO
+    #ifdef _LV_KCONFIG_PRESENT
+        #ifdef CONFIG_LV_USE_VIDEO
+            #define LV_USE_VIDEO CONFIG_LV_USE_VIDEO
+        #else
+            #define LV_USE_VIDEO 0
+        #endif
+    #else
+        #define LV_USE_VIDEO      1
+    #endif
+#endif
+
 #ifndef LV_USE_LINE
     #ifdef _LV_KCONFIG_PRESENT
         #ifdef CONFIG_LV_USE_LINE
