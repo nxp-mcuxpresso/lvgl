@@ -649,6 +649,16 @@
     #define LV_FS_FATFS_CACHE_SIZE 0    /*>0 to cache this number of bytes in lv_fs_read()*/
 #endif
 
+/*API for RAWFS (needs to be added separately).*/
+#define LV_USE_FS_RAWFS 0
+#if LV_USE_FS_RAWFS
+    #define LV_FS_RAWFS_LETTER 'F'     /*Set an upper cased letter on which the drive will accessible (e.g. 'A')*/
+#define LV_FS_RAWFS_XIP 0
+#if LV_FS_RAWFS_XIP
+    #define LV_FS_RAWFS_XIP_BASE_ADDR 0xFFFFFFFF
+#endif
+#endif
+
 /*PNG decoder library*/
 #define LV_USE_PNG 0
 

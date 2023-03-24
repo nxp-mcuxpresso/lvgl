@@ -50,6 +50,10 @@ void lv_extra_init(void)
     lv_fs_fatfs_init();
 #endif
 
+#if LV_USE_FS_RAWFS != '\0'
+    lv_fs_rawfs_init();
+#endif
+
 #if LV_USE_FS_STDIO != '\0'
     lv_fs_stdio_init();
 #endif
