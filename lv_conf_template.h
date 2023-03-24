@@ -518,6 +518,8 @@
 /*-----------
  * Widgets
  *----------*/
+#define LV_USE_ANALOGCLOCK 1
+
 #define LV_USE_ANIMIMG    1
 
 #define LV_USE_CALENDAR   1

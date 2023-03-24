@@ -1805,6 +1805,14 @@
     #endif
 #endif
 
+#ifndef LV_USE_ANALOGCLOCK
+#  ifdef CONFIG_LV_USE_ANALOGCLOCK
+#    define LV_USE_ANALOGCLOCK CONFIG_LV_USE_ANALOGCLOCK
+#  else
+#    define  LV_USE_ANALOGCLOCK        1
+#  endif
+#endif
+
 #ifndef LV_USE_MSGBOX
     #ifdef _LV_KCONFIG_PRESENT
         #ifdef CONFIG_LV_USE_MSGBOX

@@ -113,7 +113,7 @@ typedef struct {
     lv_style_t table_cell;
 #endif
 
-#if LV_USE_METER
+#if LV_USE_METER || LV_USE_ANALOGCLOCK
     lv_style_t meter_marker, meter_indic;
 #endif
 
@@ -557,7 +557,7 @@ static void style_init(void)
     lv_style_set_pad_ver(&styles->menu_separator, PAD_TINY);
 #endif
 
-#if LV_USE_METER
+#if LV_USE_METER || LV_USE_ANALOGCLOCK
     style_init_reset(&styles->meter_marker);
     lv_style_set_line_width(&styles->meter_marker, lv_disp_dpx(theme.disp, 5));
     lv_style_set_line_color(&styles->meter_marker, color_text);
@@ -1051,6 +1051,14 @@ static void theme_apply(lv_theme_t * th, lv_obj_t * obj)
 
 #if LV_USE_METER
     else if(lv_obj_check_type(obj, &lv_meter_class)) {
+        lv_obj_add_style(obj, &styles->card, 0);
+        lv_obj_add_style(obj, &styles->circle, 0);
+        lv_obj_add_style(obj, &styles->meter_indic, LV_PART_INDICATOR);
+    }
+#endif
+
+#if LV_USE_ANALOGCLOCK
+    else if(lv_obj_check_type(obj, &lv_analogclock_class)) {
         lv_obj_add_style(obj, &styles->card, 0);
         lv_obj_add_style(obj, &styles->circle, 0);
         lv_obj_add_style(obj, &styles->meter_indic, LV_PART_INDICATOR);

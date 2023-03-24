@@ -24,6 +24,7 @@ extern "C" {
 #include "menu/lv_menu.h"
 #include "msgbox/lv_msgbox.h"
 #include "meter/lv_meter.h"
+#include "analogclock/lv_analogclock.h"
 #include "radiobtn/lv_radiobtn.h"
 #include "spinbox/lv_spinbox.h"
 #include "spinner/lv_spinner.h"
