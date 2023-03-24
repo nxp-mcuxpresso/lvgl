@@ -1499,6 +1499,27 @@
     #endif
 #endif
 
+#ifndef LV_USE_DCLOCK
+    #ifdef _LV_KCONFIG_PRESENT
+        #ifdef CONFIG_LV_USE_DCLOCK
+            #define LV_USE_DCLOCK CONFIG_LV_USE_DCLOCK
+        #else
+            #define LV_USE_DCLOCK 0
+        #endif
+    #else
+        #define LV_USE_DCLOCK      1
+    #endif
+#endif
+#if LV_USE_DCLOCK
+    #ifndef LV_DCLOCK_TEXT_SELECTION
+        #ifdef CONFIG_LV_DCLOCK_TEXT_SELECTION
+            #define LV_DCLOCK_TEXT_SELECTION CONFIG_LV_DCLOCK_TEXT_SELECTION
+        #else
+            #define LV_DCLOCK_TEXT_SELECTION 1 /*Enable selecting text of the dclock*/
+        #endif
+    #endif
+#endif
+
 #ifndef LV_USE_LINE
     #ifdef _LV_KCONFIG_PRESENT
         #ifdef CONFIG_LV_USE_LINE
