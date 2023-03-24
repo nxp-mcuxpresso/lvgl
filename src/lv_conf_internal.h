@@ -1769,6 +1769,27 @@
     #endif
 #endif
 
+#ifndef LV_USE_ZH_KEYBOARD
+    #ifdef _LV_KCONFIG_PRESENT
+        #ifdef CONFIG_LV_USE_ZH_KEYBOARD
+            #define LV_USE_ZH_KEYBOARD CONFIG_LV_USE_ZH_KEYBOARD
+        #else
+            #define LV_USE_ZH_KEYBOARD 0
+        #endif
+    #else
+        #define LV_USE_ZH_KEYBOARD   1
+    #endif
+#endif
+#if LV_USE_ZH_KEYBOARD
+    #ifndef LV_ZH_KEYBOARD_MINI
+        #ifdef CONFIG_LV_ZH_KEYBOARD_MINI
+            #define LV_ZH_KEYBOARD_MINI CONFIG_LV_ZH_KEYBOARD_MINI
+        #else
+            #define LV_ZH_KEYBOARD_MINI   1
+        #endif
+    #endif
+#endif
+
 #ifndef LV_USE_LED
     #ifdef _LV_KCONFIG_PRESENT
         #ifdef CONFIG_LV_USE_LED

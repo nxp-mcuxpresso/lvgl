@@ -578,6 +578,11 @@
 
 #define LV_USE_WIN        1
 
+#define LV_USE_ZH_KEYBOARD 1
+#if LV_USE_ZH_KEYBOARD
+    #define LV_ZH_KEYBOARD_MINI 1
+#endif
+
 /*-----------
  * Themes
  *----------*/

@@ -20,6 +20,7 @@ extern "C" {
 #include "carousel/lv_carousel.h"
 #include "chart/lv_chart.h"
 #include "keyboard/lv_keyboard.h"
+#include "keyboard/lv_zh_keyboard.h"
 #include "list/lv_list.h"
 #include "menu/lv_menu.h"
 #include "msgbox/lv_msgbox.h"
