@@ -263,13 +263,19 @@ lv_analogclock_indicator_t * lv_analogclock_add_scale_lines(lv_obj_t * obj,  lv_
 }
 
 /*=====================
- * Hide digits
+ * Hide digits / center point
  *====================*/
 void lv_analogclock_hide_digits(lv_obj_t * obj, bool hide_digits)
 {
     lv_analogclock_t * analogclock = (lv_analogclock_t *)obj;
     lv_analogclock_scale_t * scale = analogclock->scale;
     scale->hide_label = hide_digits;
+}
+
+void lv_analogclock_hide_point(lv_obj_t * obj, bool hide_point)
+{
+    lv_analogclock_t * analogclock = (lv_analogclock_t *)obj;
+    analogclock->hide_point = hide_point;
 }
 
 /*=====================
@@ -356,6 +362,7 @@ static void lv_analogclock_constructor(const lv_obj_class_t * class_p, lv_obj_t 
     _lv_ll_init(&analogclock->scale_ll, sizeof(lv_analogclock_scale_t));
     _lv_ll_init(&analogclock->indicator_ll, sizeof(lv_analogclock_indicator_t));
     analogclock->scale = lv_analogclock_add_scale(obj);
+    analogclock->hide_point = false;
 
     LV_TRACE_OBJ_CREATE("finished");
 }
@@ -379,6 +386,7 @@ static void lv_analogclock_event(const lv_obj_class_t * class_p, lv_event_t * e)
 
     lv_event_code_t code = lv_event_get_code(e);
     lv_obj_t * obj = lv_event_get_target(e);
+    lv_analogclock_t * analogclock = (lv_analogclock_t *)obj;
     if(code == LV_EVENT_DRAW_MAIN) {
         lv_draw_ctx_t * draw_ctx = lv_event_get_draw_ctx(e);
         lv_area_t scale_area;
@@ -388,22 +396,24 @@ static void lv_analogclock_event(const lv_obj_class_t * class_p, lv_event_t * e)
         draw_ticks_and_labels(obj, draw_ctx, &scale_area);
         draw_needles(obj, draw_ctx, &scale_area);
 
-        lv_coord_t r_edge = lv_area_get_width(&scale_area) / 2;
-        lv_point_t scale_center;
-        scale_center.x = scale_area.x1 + r_edge;
-        scale_center.y = scale_area.y1 + r_edge;
+        if(!analogclock->hide_point) {
+            lv_coord_t r_edge = lv_area_get_width(&scale_area) / 2;
+            lv_point_t scale_center;
+            scale_center.x = scale_area.x1 + r_edge;
+            scale_center.y = scale_area.y1 + r_edge;
 
-        lv_draw_rect_dsc_t mid_dsc;
-        lv_draw_rect_dsc_init(&mid_dsc);
-        lv_obj_init_draw_rect_dsc(obj, LV_PART_INDICATOR, &mid_dsc);
-        lv_coord_t w = lv_obj_get_style_width(obj, LV_PART_INDICATOR) / 2;
-        lv_coord_t h = lv_obj_get_style_height(obj, LV_PART_INDICATOR) / 2;
-        lv_area_t nm_cord;
-        nm_cord.x1 = scale_center.x - w;
-        nm_cord.y1 = scale_center.y - h;
-        nm_cord.x2 = scale_center.x + w;
-        nm_cord.y2 = scale_center.y + h;
-        lv_draw_rect(draw_ctx, &mid_dsc, &nm_cord);
+            lv_draw_rect_dsc_t mid_dsc;
+            lv_draw_rect_dsc_init(&mid_dsc);
+            lv_obj_init_draw_rect_dsc(obj, LV_PART_INDICATOR, &mid_dsc);
+            lv_coord_t w = lv_obj_get_style_width(obj, LV_PART_INDICATOR) / 2;
+            lv_coord_t h = lv_obj_get_style_height(obj, LV_PART_INDICATOR) / 2;
+            lv_area_t nm_cord;
+            nm_cord.x1 = scale_center.x - w;
+            nm_cord.y1 = scale_center.y - h;
+            nm_cord.x2 = scale_center.x + w;
+            nm_cord.y2 = scale_center.y + h;
+            lv_draw_rect(draw_ctx, &mid_dsc, &nm_cord);
+        }
     }
 }
 

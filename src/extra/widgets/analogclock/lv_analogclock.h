@@ -97,6 +97,7 @@ typedef struct {
     lv_ll_t scale_ll;
     lv_analogclock_scale_t * scale;
     lv_ll_t indicator_ll;
+    bool hide_point;
     lv_analogclock_indicator_t * hour_indic;
     lv_analogclock_indicator_t * min_indic;
     lv_analogclock_indicator_t * sec_indic;
@@ -180,7 +181,7 @@ void lv_analogclock_set_scale_range(lv_obj_t * obj, lv_analogclock_scale_t * sca
                                     uint32_t rotation);
 
 /*=====================
- * Hide digits
+ * Hide digits / centerpoint
  *====================*/
 
 /**
@@ -189,6 +190,13 @@ void lv_analogclock_set_scale_range(lv_obj_t * obj, lv_analogclock_scale_t * sca
  * @param hide_digits   set whether has digits
  */
 void lv_analogclock_hide_digits(lv_obj_t * obj, bool hide_digits);
+
+/**
+ * Hide the center point or not
+ * @param obj           pointer to a analogclock object
+ * @param hide_point    set whether has center point
+ */
+void lv_analogclock_hide_point(lv_obj_t * obj, bool hide_point);
 
 /*=====================
  * Add indicator
