@@ -30,6 +30,7 @@ extern "C" {
 #include "spinbox/lv_spinbox.h"
 #include "spinner/lv_spinner.h"
 #include "tabview/lv_tabview.h"
+#include "textprogress/lv_textprogress.h"
 #include "tileview/lv_tileview.h"
 #include "win/lv_win.h"
 #include "colorwheel/lv_colorwheel.h"
