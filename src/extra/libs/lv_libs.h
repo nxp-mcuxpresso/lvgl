@@ -13,6 +13,7 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
+#include "barcode/lv_barcode.h"
 #include "bmp/lv_bmp.h"
 #include "fsdrv/lv_fsdrv.h"
 #include "png/lv_png.h"
