@@ -45,7 +45,7 @@ anim_imgs[2] = lv.img_dsc_t({
 
 animimg0 = lv.animimg(lv.scr_act())
 animimg0.center()
-animimg0.set_src(anim_imgs, 3)
+animimg0.set_src(anim_imgs, 3, False)
 animimg0.set_duration(1000)
 animimg0.set_repeat_count(lv.ANIM_REPEAT.INFINITE)
 animimg0.start()
