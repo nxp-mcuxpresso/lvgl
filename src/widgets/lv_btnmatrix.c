@@ -104,13 +104,22 @@ void lv_btnmatrix_set_map(lv_obj_t * obj, const char * map[])
     lv_base_dir_t base_dir = lv_obj_get_style_base_dir(obj, LV_PART_MAIN);
 
     /*Set size and positions of the buttons*/
+    lv_coord_t bwidth = lv_obj_get_style_border_width(obj, LV_PART_MAIN);
+    lv_coord_t bside = lv_obj_get_style_border_side(obj, LV_PART_MAIN);
     lv_coord_t pleft = lv_obj_get_style_pad_left(obj, LV_PART_MAIN);
+    lv_coord_t sleft = (bside & LV_BORDER_SIDE_LEFT) ? pleft + bwidth : pleft;
     lv_coord_t ptop = lv_obj_get_style_pad_top(obj, LV_PART_MAIN);
+    lv_coord_t stop = (bside & LV_BORDER_SIDE_TOP) ? ptop + bwidth : ptop;
+    lv_coord_t pright = lv_obj_get_style_pad_right(obj, LV_PART_MAIN);
+    lv_coord_t sright = (bside & LV_BORDER_SIDE_RIGHT) ? pright + bwidth : pright;
+    lv_coord_t pbottom = lv_obj_get_style_pad_bottom(obj, LV_PART_MAIN);
+    lv_coord_t sbottom = (bside & LV_BORDER_SIDE_BOTTOM) ? pbottom + bwidth : pbottom;
+
     lv_coord_t prow = lv_obj_get_style_pad_row(obj, LV_PART_MAIN);
     lv_coord_t pcol = lv_obj_get_style_pad_column(obj, LV_PART_MAIN);
 
-    lv_coord_t max_w            = lv_obj_get_content_width(obj);
-    lv_coord_t max_h            = lv_obj_get_content_height(obj);
+    lv_coord_t max_w            = lv_obj_get_width(obj) - sleft - sright;
+    lv_coord_t max_h            = lv_obj_get_height(obj) - stop - sbottom;
 
     /*Calculate the position of each row*/
     lv_coord_t max_h_no_gap = max_h - (prow * (btnm->row_cnt - 1));
@@ -138,8 +147,8 @@ void lv_btnmatrix_set_map(lv_obj_t * obj, const char * map[])
             continue;
         }
 
-        lv_coord_t row_y1 = ptop + (max_h_no_gap * row) / btnm->row_cnt + row * prow;
-        lv_coord_t row_y2 = ptop + (max_h_no_gap * (row + 1)) / btnm->row_cnt + row * prow - 1;
+        lv_coord_t row_y1 = stop + (max_h_no_gap * row) / btnm->row_cnt + row * prow;
+        lv_coord_t row_y2 = stop + (max_h_no_gap * (row + 1)) / btnm->row_cnt + row * prow - 1;
 
         /*Set the button size and positions*/
         lv_coord_t max_w_no_gap = max_w - (pcol * (btn_cnt - 1));
@@ -163,8 +172,8 @@ void lv_btnmatrix_set_map(lv_obj_t * obj, const char * map[])
                 btn_x2 = max_w - btn_x2;
             }
 
-            btn_x1 += pleft;
-            btn_x2 += pleft;
+            btn_x1 += sleft;
+            btn_x2 += sleft;
 
             lv_area_set(&btnm->button_areas[btn_tot_i], btn_x1, row_y1, btn_x2, row_y2);
 
