@@ -93,7 +93,6 @@ lv_obj_t * lv_radiobtn_add_item(lv_obj_t * parent, const char * txt)
     lv_obj_t * obj = lv_radiobtn_create_item(parent);
     lv_obj_class_init_obj(obj);
     lv_obj_add_flag(obj, LV_OBJ_FLAG_EVENT_BUBBLE);
-    lv_obj_set_style_pad_all(obj, 3, LV_PART_MAIN);
     lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
     if(txt) {
         lv_radiobtn_set_item_text(obj, txt);
