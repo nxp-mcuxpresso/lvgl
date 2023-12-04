@@ -89,7 +89,7 @@ bool lv_animimg_del(lv_obj_t * obj)
 {
     LV_ASSERT_OBJ(obj, MY_CLASS);
     lv_animimg_t * animimg = (lv_animimg_t *)obj;
-    return lv_anim_del(&animimg->anim, NULL);
+    return lv_anim_del(animimg, NULL);
 }
 
 
