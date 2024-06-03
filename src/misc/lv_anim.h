@@ -96,6 +96,7 @@ typedef struct _lv_anim_t {
     uint8_t playback_now : 1; /**< Play back is in progress*/
     uint8_t run_round : 1;    /**< Indicates the animation has run in this round*/
     uint8_t start_cb_called : 1;    /**< Indicates that the `start_cb` was already called*/
+    bool anim_pause;
 } lv_anim_t;
 
 /**********************
@@ -346,6 +347,24 @@ static inline void * lv_anim_get_user_data(lv_anim_t * a)
  * @return          true: at least 1 animation is deleted, false: no animation is deleted
  */
 bool lv_anim_del(void * var, lv_anim_exec_xcb_t exec_cb);
+
+/**
+ * Pause an animation of a variable with a given animator function
+ * @param var       pointer to variable
+ * @param exec_cb   a function pointer which is animating 'var',
+ *                  or NULL to ignore it and delete all the animations of 'var
+ * @return          true: at least 1 animation is stoped, false: no animation is stoped
+ */
+bool lv_anim_pause(void * var, lv_anim_exec_xcb_t exec_cb);
+
+/**
+ * Resume an animation of a variable with a given animator function
+ * @param var       pointer to variable
+ * @param exec_cb   a function pointer which is animating 'var',
+ *                  or NULL to ignore it and delete all the animations of 'var
+ * @return          true: at least 1 animation is resumed, false: no animation is resumed
+ */
+bool lv_anim_resume(void * var, lv_anim_exec_xcb_t exec_cb);
 
 /**
  * Delete all the animations
