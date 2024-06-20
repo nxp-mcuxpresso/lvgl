@@ -14,7 +14,6 @@ extern "C" {
  *      INCLUDES
  *********************/
 #include "../lv_draw.h"
-#if LV_USE_DRAW_SW
 
 #include "../../misc/lv_area.h"
 #include "../../misc/lv_color.h"
@@ -51,6 +50,7 @@ typedef struct {
 } lv_draw_sw_shadow_cache_t;
 #endif
 
+#if LV_USE_DRAW_SW
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
