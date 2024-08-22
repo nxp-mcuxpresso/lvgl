@@ -3,6 +3,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #ifndef LV_ZH_KEYBOARD_H
 #define LV_ZH_KEYBOARD_H
 

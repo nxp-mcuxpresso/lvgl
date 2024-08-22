@@ -3,6 +3,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #ifndef LV_CAROUSEL_H
 #define LV_CAROUSEL_H
 

@@ -4,6 +4,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 /*********************
  *      INCLUDES
  *********************/

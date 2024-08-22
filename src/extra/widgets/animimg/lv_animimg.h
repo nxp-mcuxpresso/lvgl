@@ -3,6 +3,10 @@
  *
  */
 
+/**
+ * Modified by NXP in 2023
+ */
+
 #ifndef LV_ANIM_IMG_H
 #define LV_ANIM_IMG_H
 

@@ -3,6 +3,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #ifndef LV_DCLOCK_H
 #define LV_DCLOCK_H
 

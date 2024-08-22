@@ -2,6 +2,12 @@
  *  STATIC VARIABLES
  **********************/
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #if LV_USE_ZH_KEYBOARD
 
 struct PINYIN_initials {

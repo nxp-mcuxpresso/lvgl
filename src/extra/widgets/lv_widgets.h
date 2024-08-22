@@ -3,6 +3,10 @@
  *
  */
 
+/**
+ * Modified by NXP in 2023
+ */
+
 #ifndef LV_WIDGETS_H
 #define LV_WIDGETS_H
 

@@ -3,6 +3,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #ifndef LV_RADIOBTN_H
 #define LV_RADIOBTN_H
 

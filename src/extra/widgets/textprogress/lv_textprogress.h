@@ -3,6 +3,12 @@
  *
  */
 
+/**
+ * Copyright 2023 NXP
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #ifndef LV_TEXTPROGRESS_H
 #define LV_TEXTPROGRESS_H
 
