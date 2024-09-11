@@ -56,7 +56,7 @@ static void prvCheckCondInit(lv_thread_sync_t * pxCond);
 
 static void prvCheckCondInitIsr(lv_thread_sync_t * pxCond);
 
-#if !USE_FREERTOS_TASK_NOTIFY
+#if !LV_USE_FREERTOS_TASK_NOTIFY
 static void prvTestAndDecrement(lv_thread_sync_t * pxCond,
                                 uint32_t ulLocalWaitingThreads);
 #endif
@@ -201,7 +201,7 @@ lv_result_t lv_thread_sync_wait(lv_thread_sync_t * pxCond)
     /* If the cond is uninitialized, perform initialization. */
     prvCheckCondInit(pxCond);
 
-#if USE_FREERTOS_TASK_NOTIFY
+#if LV_USE_FREERTOS_TASK_NOTIFY
     TaskHandle_t xCurrentTaskHandle = xTaskGetCurrentTaskHandle();
 
     _enter_critical();
@@ -281,7 +281,7 @@ lv_result_t lv_thread_sync_signal(lv_thread_sync_t * pxCond)
     /* If the cond is uninitialized, perform initialization. */
     prvCheckCondInit(pxCond);
 
-#if USE_FREERTOS_TASK_NOTIFY
+#if LV_USE_FREERTOS_TASK_NOTIFY
     _enter_critical();
     TaskHandle_t xTaskToNotify = pxCond->xTaskToNotify;
     pxCond->xTaskToNotify = NULL;
@@ -335,13 +335,13 @@ lv_result_t lv_thread_sync_signal(lv_thread_sync_t * pxCond)
 
 lv_result_t lv_thread_sync_delete(lv_thread_sync_t * pxCond)
 {
-#if !USE_FREERTOS_TASK_NOTIFY
+#if !LV_USE_FREERTOS_TASK_NOTIFY
     /* Cleanup all resources used by the cond. */
     vSemaphoreDelete(pxCond->xCondWaitSemaphore);
     vSemaphoreDelete(pxCond->xSyncMutex);
     pxCond->ulWaitingThreads = 0;
-    pxCond->xSyncSignal = pdFALSE;
 #endif
+    pxCond->xSyncSignal = pdFALSE;
     pxCond->xIsInitialized = pdFALSE;
 
     return LV_RESULT_OK;
@@ -354,7 +354,7 @@ lv_result_t lv_thread_sync_signal_isr(lv_thread_sync_t * pxCond)
     /* If the cond is uninitialized, perform initialization. */
     prvCheckCondInitIsr(pxCond);
 
-#if USE_FREERTOS_TASK_NOTIFY
+#if LV_USE_FREERTOS_TASK_NOTIFY
     uint32_t mask = _enter_critical_isr();
     TaskHandle_t xTaskToNotify = pxCond->xTaskToNotify;
     pxCond->xTaskToNotify = NULL;
@@ -476,7 +476,7 @@ static void prvCondInit(lv_thread_sync_t * pxCond)
     pxCond->xIsInitialized = pdTRUE;
     pxCond->xSyncSignal = pdFALSE;
 
-#if USE_FREERTOS_TASK_NOTIFY
+#if LV_USE_FREERTOS_TASK_NOTIFY
     pxCond->xTaskToNotify = NULL;
 #else
     pxCond->xCondWaitSemaphore = xSemaphoreCreateCounting(ulMAX_COUNT, 0U);
@@ -542,7 +542,7 @@ static void prvCheckCondInitIsr(lv_thread_sync_t * pxCond)
     }
 }
 
-#if !USE_FREERTOS_TASK_NOTIFY
+#if !LV_USE_FREERTOS_TASK_NOTIFY
 static void prvTestAndDecrement(lv_thread_sync_t * pxCond,
                                 uint32_t ulLocalWaitingThreads)
 {
