@@ -43,7 +43,7 @@
 #if LV_USE_DRAW_VGLITE
     #include "draw/nxp/vglite/lv_draw_vglite.h"
 #endif
-#if LV_USE_DRAW_PXP
+#if LV_USE_DRAW_PXP || LV_USE_ROTATE_PXP
     #include "draw/nxp/pxp/lv_draw_pxp.h"
 #endif
 #if LV_USE_DRAW_DAVE2D
@@ -198,7 +198,7 @@ void lv_init(void)
     lv_draw_vglite_init();
 #endif
 
-#if LV_USE_DRAW_PXP
+#if LV_USE_DRAW_PXP || LV_USE_ROTATE_PXP
     lv_draw_pxp_init();
 #endif
 
