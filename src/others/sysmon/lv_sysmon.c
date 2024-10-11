@@ -119,7 +119,7 @@ void lv_sysmon_show_performance(lv_display_t * disp)
         lv_display_add_event_cb(disp, perf_monitor_disp_event_cb, LV_EVENT_ALL, NULL);
     }
 
-#if LV_USE_PERF_MONITOR_LOG_MODE
+#if LV_USE_PERF_MONITOR_LOG_MODE || !LV_USE_PERF_MONITOR_OBSERVER
     lv_obj_add_flag(disp->perf_label, LV_OBJ_FLAG_HIDDEN);
 #else
     lv_obj_remove_flag(disp->perf_label, LV_OBJ_FLAG_HIDDEN);
@@ -281,6 +281,7 @@ static void perf_update_timer_cb(lv_timer_t * t)
 
 static void perf_observer_cb(lv_observer_t * observer, lv_subject_t * subject)
 {
+#if LV_USE_PERF_MONITOR_OBSERVER
     const lv_sysmon_perf_info_t * perf = lv_subject_get_pointer(subject);
 
 #if LV_USE_PERF_MONITOR_LOG_MODE
@@ -303,6 +304,10 @@ static void perf_observer_cb(lv_observer_t * observer, lv_subject_t * subject)
         perf->calculated.render_avg_time, perf->calculated.flush_avg_time
     );
 #endif /*LV_USE_PERF_MONITOR_LOG_MODE*/
+#else
+    LV_UNUSED(observer);
+    LV_UNUSED(subject);
+#endif /*LV_USE_PERF_MONITOR_OBSERVER*/
 }
 
 #endif
