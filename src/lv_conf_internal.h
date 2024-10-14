@@ -92,6 +92,15 @@
     #endif
 #endif
 
+/* Swap the 2 bytes of RGB565 color*/
+#ifndef LV_COLOR_16_SWAP
+    #ifdef CONFIG_LV_COLOR_16_SWAP
+        #define LV_COLOR_16_SWAP CONFIG_LV_COLOR_16_SWAP
+    #else
+        #define LV_COLOR_16_SWAP 0
+    #endif
+#endif
+
 /*=========================
    STDLIB WRAPPER SETTINGS
  *=========================*/

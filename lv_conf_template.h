@@ -29,6 +29,9 @@
 /** Color depth: 1 (I1), 8 (L8), 16 (RGB565), 24 (RGB888), 32 (XRGB8888) */
 #define LV_COLOR_DEPTH 16
 
+/* Swap the 2 bytes of RGB565 color*/
+#define LV_COLOR_16_SWAP 0
+
 /*=========================
    STDLIB WRAPPER SETTINGS
  *=========================*/

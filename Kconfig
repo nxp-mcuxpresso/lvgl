@@ -38,6 +38,10 @@ menu "LVGL configuration"
 			default 16 if LV_COLOR_DEPTH_16
 			default 24 if LV_COLOR_DEPTH_24
 			default 32 if LV_COLOR_DEPTH_32
+
+		config LV_COLOR_16_SWAP
+			bool "Swap the 2 bytes of RGB565 color"
+			default 0
 	endmenu
 
 	menu "Memory Settings"
