@@ -3,6 +3,10 @@
  *
  */
 
+/**
+ * Modified by NXP in 2024
+ */
+
 #ifndef LV_TYPES_H
 #define LV_TYPES_H
 
@@ -186,6 +190,10 @@ typedef struct lv_buttonmatrix_t lv_buttonmatrix_t;
 typedef struct lv_calendar_t lv_calendar_t;
 
 typedef struct lv_canvas_t lv_canvas_t;
+
+typedef struct lv_carousel_t lv_carousel_t;
+
+typedef struct lv_carousel_element_t lv_carousel_element_t;
 
 typedef struct lv_chart_series_t lv_chart_series_t;
 

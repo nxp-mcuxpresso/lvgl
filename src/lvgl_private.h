@@ -94,6 +94,7 @@ extern "C" {
 #include "widgets/span/lv_span_private.h"
 #include "widgets/label/lv_label_private.h"
 #include "widgets/canvas/lv_canvas_private.h"
+#include "widgets/carousel/lv_carousel_private.h"
 #include "widgets/tabview/lv_tabview_private.h"
 #include "tick/lv_tick_private.h"
 #include "stdlib/builtin/lv_tlsf_private.h"

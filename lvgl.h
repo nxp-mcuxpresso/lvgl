@@ -53,6 +53,7 @@ extern "C" {
 #include "src/widgets/buttonmatrix/lv_buttonmatrix.h"
 #include "src/widgets/calendar/lv_calendar.h"
 #include "src/widgets/canvas/lv_canvas.h"
+#include "src/widgets/carousel/lv_carousel.h"
 #include "src/widgets/chart/lv_chart.h"
 #include "src/widgets/checkbox/lv_checkbox.h"
 #include "src/widgets/dropdown/lv_dropdown.h"

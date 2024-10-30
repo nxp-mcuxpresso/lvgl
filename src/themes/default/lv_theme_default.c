@@ -3,6 +3,10 @@
  *
  */
 
+/**
+ * Modified by NXP in 2024
+ */
+
 /*********************
  *      INCLUDES
  *********************/
@@ -122,6 +126,10 @@ typedef struct {
 
 #if LV_USE_CALENDAR
     lv_style_t calendar_btnm_bg, calendar_btnm_day, calendar_header;
+#endif
+
+#if LV_USE_CAROUSEL
+    lv_style_t outline_focus, outline_disabled;
 #endif
 
 #if LV_USE_MENU
@@ -569,6 +577,17 @@ static void style_init(my_theme_t * theme)
     lv_style_set_pad_top(&theme->styles.calendar_header, PAD_SMALL);
     lv_style_set_pad_bottom(&theme->styles.calendar_header, PAD_TINY);
     lv_style_set_pad_gap(&theme->styles.calendar_header, PAD_SMALL);
+#endif
+
+#if LV_USE_CAROUSEL
+    style_init_reset(&theme->styles.outline_focus);
+    lv_style_set_outline_color(&theme->styles.outline_focus, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_outline_width(&theme->styles.outline_focus, OUTLINE_WIDTH);
+    lv_style_set_outline_opa(&theme->styles.outline_focus, LV_OPA_50);
+    style_init_reset(&theme->styles.outline_disabled);
+    lv_style_set_outline_color(&theme->styles.outline_disabled, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_outline_width(&theme->styles.outline_disabled, OUTLINE_WIDTH);
+    lv_style_set_outline_opa(&theme->styles.outline_disabled, LV_OPA_50);
 #endif
 
 #if LV_USE_MSGBOX
@@ -1180,6 +1199,20 @@ static void theme_apply(lv_theme_t * th, lv_obj_t * obj)
     else if(lv_obj_check_type(obj, &lv_tileview_tile_class)) {
         lv_obj_add_style(obj, &theme->styles.scrollbar, LV_PART_SCROLLBAR);
         lv_obj_add_style(obj, &theme->styles.scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+    }
+#endif
+
+#if LV_USE_CAROUSEL
+    else if(lv_obj_check_type(obj, &lv_carousel_class)) {
+        lv_obj_add_style(obj, &theme->styles.scr, 0);
+        lv_obj_add_style(obj, &theme->styles.scrollbar, LV_PART_SCROLLBAR);
+        lv_obj_add_style(obj, &theme->styles.scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+    }
+    else if(lv_obj_check_type(obj, &lv_carousel_element_class)) {
+        lv_obj_add_style(obj, &theme->styles.scrollbar, LV_PART_SCROLLBAR);
+        lv_obj_add_style(obj, &theme->styles.scrollbar_scrolled, LV_PART_SCROLLBAR | LV_STATE_SCROLLED);
+        lv_obj_add_style(obj, &theme->styles.outline_focus, LV_STATE_FOCUSED);
+        lv_obj_add_style(obj, &theme->styles.outline_disabled, LV_STATE_DEFAULT);
     }
 #endif
 

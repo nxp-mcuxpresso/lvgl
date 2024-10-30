@@ -610,6 +610,8 @@
 
 #define LV_USE_CANVAS     1
 
+#define LV_USE_CAROUSEL   1
+
 #define LV_USE_CHART      1
 
 #define LV_USE_CHECKBOX   1

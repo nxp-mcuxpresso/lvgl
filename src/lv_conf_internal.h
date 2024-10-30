@@ -1905,6 +1905,18 @@
     #endif
 #endif
 
+#ifndef LV_USE_CAROUSEL
+    #ifdef LV_KCONFIG_PRESENT
+        #ifdef CONFIG_LV_USE_CAROUSEL
+            #define LV_USE_CAROUSEL CONFIG_LV_USE_CAROUSEL
+        #else
+            #define LV_USE_CAROUSEL 0
+        #endif
+    #else
+        #define LV_USE_CAROUSEL   1
+    #endif
+#endif
+
 #ifndef LV_USE_CHART
     #ifdef LV_KCONFIG_PRESENT
         #ifdef CONFIG_LV_USE_CHART
