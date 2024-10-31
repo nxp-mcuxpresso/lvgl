@@ -3,6 +3,10 @@
  *
  */
 
+/**
+ * Modified by NXP in 2024
+ */
+
 #ifndef LV_ANIM_H
 #define LV_ANIM_H
 
@@ -151,6 +155,7 @@ struct lv_anim_t {
     uint8_t run_round : 1;        /**< Indicates the animation has run in this round*/
     uint8_t start_cb_called : 1;  /**< Indicates that the `start_cb` was already called*/
     uint8_t early_apply  : 1;     /**< 1: Apply start value immediately even is there is `delay`*/
+    bool anim_pause;
 };
 
 /**********************
@@ -321,6 +326,25 @@ void lv_anim_set_bezier3_param(lv_anim_t * a, int16_t x1, int16_t y1, int16_t x2
  * @return          pointer to the created animation (different from the `a` parameter)
  */
 lv_anim_t * lv_anim_start(const lv_anim_t * a);
+
+/**
+ * Pause an animation of a variable with a given animator function
+ * @param var       pointer to variable
+ * @param exec_cb   a function pointer which is animating 'var',
+ *                  or NULL to ignore it and delete all the animations of 'var
+ * @return          true: at least 1 animation is stoped, false: no animation is stoped
+ */
+bool lv_anim_pause(void * var, lv_anim_exec_xcb_t exec_cb);
+
+/**
+ * Resume an animation of a variable with a given animator function
+ * @param var       pointer to variable
+ * @param exec_cb   a function pointer which is animating 'var',
+ *                  or NULL to ignore it and delete all the animations of 'var
+ * @return          true: at least 1 animation is resumed, false: no animation is resumed
+ */
+bool lv_anim_resume(void * var, lv_anim_exec_xcb_t exec_cb);
+
 
 /**
  * Get a delay before starting the animation

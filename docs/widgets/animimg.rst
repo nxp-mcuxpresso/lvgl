@@ -31,7 +31,7 @@ Image sources
 -------------
 
 To set the image in a state, use the
-:cpp:expr:`lv_animimg_set_src(imagebutton, dsc[], num)`.
+:cpp:expr:`lv_animimg_set_src(imagebutton, dsc[], num, reverse)`.
 
 Using the inner animation
 -------------------------
