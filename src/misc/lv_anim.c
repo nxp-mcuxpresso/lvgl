@@ -545,8 +545,6 @@ static void anim_timer(lv_timer_t * param)
 
     while(a != NULL) {
         uint32_t elaps = lv_tick_elaps(a->last_timer_run);
-        a->act_time += elaps;
-
         a->last_timer_run = lv_tick_get();
 
         /*It can be set by `lv_anim_delete()` typically in `end_cb`. If set then an animation delete
@@ -575,7 +573,7 @@ static void anim_timer(lv_timer_t * param)
                 /*Do not let two animations for the same 'var' with the same 'exec_cb'*/
                 remove_concurrent_anims(a);
             }
-
+            a->act_time += elaps;
             if(a->act_time >= 0) {
                 if(a->act_time > a->duration) a->act_time = a->duration;
 
