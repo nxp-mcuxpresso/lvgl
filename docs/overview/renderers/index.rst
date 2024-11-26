@@ -9,6 +9,7 @@ Renderers and GPUs
     sdl
     arm2d
     pxp
+    g2d
     stm32_dma2d
     vglite
     vg_lite
