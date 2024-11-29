@@ -117,7 +117,7 @@ void lv_draw_vglite_init(void)
     draw_vglite_unit->base_unit.delete_cb = _vglite_delete;
 
 #if LV_USE_VGLITE_DRAW_THREAD
-    lv_thread_init(&draw_vglite_unit->thread, LV_THREAD_PRIO_HIGH, _vglite_render_thread_cb, 3 * 1024, draw_vglite_unit);
+    lv_thread_init(&draw_vglite_unit->thread, LV_THREAD_PRIO_HIGH, _vglite_render_thread_cb, 4 * 1024, draw_vglite_unit);
 #endif
 }
 
