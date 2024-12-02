@@ -394,7 +394,7 @@ static void containers_with_opa_cb(void)
     }
 }
 
-static void containers_with_opa_layer_cb(void)
+/* static void containers_with_opa_layer_cb(void)
 {
     lv_obj_t * scr = lv_screen_active();
     lv_obj_set_flex_flow(scr, LV_FLEX_FLOW_ROW_WRAP);
@@ -417,7 +417,7 @@ static void containers_with_opa_layer_cb(void)
             fall_anim(card, 30);
         }
     }
-}
+} */
 
 static void containers_with_scrolling_cb(void)
 {
@@ -477,7 +477,7 @@ static lv_demo_benchmark_scene_dsc_t scenes[] = {
     {.name = "Containers",                 .scene_time = 3000, .create_cb = containers_cb},
     {.name = "Containers with overlay",    .scene_time = 3000, .create_cb = containers_with_overlay_cb},
     {.name = "Containers with opa",        .scene_time = 3000, .create_cb = containers_with_opa_cb},
-    {.name = "Containers with opa_layer",  .scene_time = 3000, .create_cb = containers_with_opa_layer_cb},
+    /* {.name = "Containers with opa_layer",  .scene_time = 3000, .create_cb = containers_with_opa_layer_cb}, */
     {.name = "Containers with scrolling",  .scene_time = 5000, .create_cb = containers_with_scrolling_cb},
 
     {.name = "Widgets demo",               .scene_time = 20000,           .create_cb = widgets_demo_cb},
