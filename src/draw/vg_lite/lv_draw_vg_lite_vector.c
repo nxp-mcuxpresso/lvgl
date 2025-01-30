@@ -53,8 +53,7 @@ static vg_lite_fill_t lv_fill_to_vg(lv_vector_fill_t fill_rule);
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
-
-void lv_draw_vg_lite_vector(lv_draw_unit_t * draw_unit, const lv_draw_vector_task_dsc_t * dsc)
+void lv_draw_vg_lite_vector(lv_draw_task_t * t, const lv_draw_vector_task_dsc_t * dsc)
 {
     if(dsc->task_list == NULL)
         return;
@@ -64,7 +63,7 @@ void lv_draw_vg_lite_vector(lv_draw_unit_t * draw_unit, const lv_draw_vector_tas
         return;
 
     LV_PROFILER_BEGIN;
-    lv_vector_for_each_destroy_tasks(dsc->task_list, task_draw_cb, draw_unit);
+    lv_vector_for_each_destroy_tasks(dsc->task_list, task_draw_cb, t->draw_unit);
     LV_PROFILER_END;
 }
 

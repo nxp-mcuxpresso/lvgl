@@ -1,10 +1,9 @@
 #include "lv_draw_dave2d.h"
 #if LV_USE_DRAW_DAVE2D
 
-void lv_draw_dave2d_arc(lv_draw_dave2d_unit_t * u, const lv_draw_arc_dsc_t * dsc, const lv_area_t * coords)
+void lv_draw_dave2d_arc(lv_draw_task_t * t, const lv_draw_arc_dsc_t * dsc, const lv_area_t * coords)
 {
-
-    uint32_t                flags = 0;
+    uint32_t flags = 0;
     int32_t sin_start;
     int32_t cos_start;
     int32_t sin_end;
@@ -15,13 +14,14 @@ void lv_draw_dave2d_arc(lv_draw_dave2d_unit_t * u, const lv_draw_arc_dsc_t * dsc
     lv_point_t arc_centre;
     int32_t x;
     int32_t y;
+    lv_draw_dave2d_unit_t * u = (lv_draw_dave2d_unit_t *)t->draw_unit;
 
-    if(!lv_area_intersect(&clipped_area, coords, u->base_unit.clip_area)) return;
+    if(!lv_area_intersect(&clipped_area, coords, &t->clip_area)) return;
 
-    x = 0 - u->base_unit.target_layer->buf_area.x1;
-    y = 0 - u->base_unit.target_layer->buf_area.y1;
+    x = 0 - t->target_layer->buf_area.x1;
+    y = 0 - t->target_layer->buf_area.y1;
 
-    buffer_area = u->base_unit.target_layer->buf_area;
+    buffer_area = t->target_layer->buf_area;
 
     arc_centre = dsc->center;
     arc_centre.x = arc_centre.x - buffer_area.x1;
@@ -50,7 +50,7 @@ void lv_draw_dave2d_arc(lv_draw_dave2d_unit_t * u, const lv_draw_arc_dsc_t * dsc
     //
     // Generate render operations
     //
-    d2_framebuffer_from_layer(u->d2_handle, u->base_unit.target_layer);
+    d2_framebuffer_from_layer(u->d2_handle, t->target_layer);
 
     d2_setalpha(u->d2_handle, dsc->opa);
 

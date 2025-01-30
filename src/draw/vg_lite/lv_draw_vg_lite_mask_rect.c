@@ -41,14 +41,13 @@
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
-
-void lv_draw_vg_lite_mask_rect(lv_draw_unit_t * draw_unit, const lv_draw_mask_rect_dsc_t * dsc,
+void lv_draw_vg_lite_mask_rect(lv_draw_task_t * t, const lv_draw_mask_rect_dsc_t * dsc,
                                const lv_area_t * coords)
 {
     LV_UNUSED(coords);
-
     lv_area_t draw_area;
-    if(!lv_area_intersect(&draw_area, &dsc->area, draw_unit->clip_area)) {
+
+    if(!lv_area_intersect(&draw_area, &dsc->area, &t->clip_area)) {
         return;
     }
 
@@ -74,7 +73,7 @@ void lv_draw_vg_lite_mask_rect(lv_draw_unit_t * draw_unit, const lv_draw_mask_re
         lv_draw_sw_mask_res_t res = lv_draw_sw_mask_apply(masks, mask_buf, draw_area.x1, y, area_w);
         if(res == LV_DRAW_SW_MASK_RES_FULL_COVER) continue;
 
-        lv_layer_t * target_layer = draw_unit->target_layer;
+        lv_layer_t * target_layer = t->target_layer;
         lv_color32_t * c32_buf = lv_draw_layer_go_to_xy(target_layer, draw_area.x1 - target_layer->buf_area.x1,
                                                         y - target_layer->buf_area.y1);
 
@@ -97,8 +96,7 @@ void lv_draw_vg_lite_mask_rect(lv_draw_unit_t * draw_unit, const lv_draw_mask_re
     lv_free(mask_buf);
     lv_draw_sw_mask_free_param(&param);
 #else
-    /* Using hardware rendering masks */
-    lv_draw_vg_lite_unit_t * u = (lv_draw_vg_lite_unit_t *)draw_unit;
+    lv_draw_vg_lite_unit_t * u = (lv_draw_vg_lite_unit_t *)t->draw_unit;
 
     int32_t w = lv_area_get_width(&dsc->area);
     int32_t h = lv_area_get_height(&dsc->area);
