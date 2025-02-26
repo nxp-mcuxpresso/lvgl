@@ -53,7 +53,7 @@ static lv_buf_map_t * table;
 void g2d_create_buf_map(void)
 {
     table = (lv_buf_map_t *) lv_malloc(sizeof(lv_buf_map_t));
-    table->size = HASH_TABLE_SIZE;
+    table->size = LV_G2D_HASH_TABLE_SIZE;
     table->count = 0;
     table->items = (lv_map_item_t **) lv_malloc_zeroed(table->size * sizeof(lv_map_item_t *));
     table->overflow_list = (lv_array_t **) lv_malloc_zeroed(table->size * sizeof(lv_array_t *));
@@ -199,7 +199,7 @@ static unsigned long _map_hash_function(void * ptr)
     for(int j = 0; str[j]; j++)
         i += str[j];
 
-    return i % HASH_TABLE_SIZE;
+    return i % LV_G2D_HASH_TABLE_SIZE;
 }
 
 static void _handle_collision(unsigned long index, lv_map_item_t * item)

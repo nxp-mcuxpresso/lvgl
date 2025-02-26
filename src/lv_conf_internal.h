@@ -696,11 +696,11 @@
 #if LV_USE_DRAW_G2D
     /** Maximum number of buffers that can be stored for G2D draw unit.
      *  Includes the frame buffers and assets. */
-    #ifndef HASH_TABLE_SIZE
-        #ifdef CONFIG_HASH_TABLE_SIZE
-            #define HASH_TABLE_SIZE CONFIG_HASH_TABLE_SIZE
+    #ifndef LV_G2D_HASH_TABLE_SIZE
+        #ifdef CONFIG_LV_G2D_HASH_TABLE_SIZE
+            #define LV_G2D_HASH_TABLE_SIZE CONFIG_LV_G2D_HASH_TABLE_SIZE
         #else
-            #define HASH_TABLE_SIZE 50
+            #define LV_G2D_HASH_TABLE_SIZE 50
         #endif
     #endif
 
