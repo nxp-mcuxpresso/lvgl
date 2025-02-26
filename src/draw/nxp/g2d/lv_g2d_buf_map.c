@@ -67,7 +67,10 @@ void g2d_create_buf_map(void)
 void g2d_free_buf_map(void)
 {
     for(int i = 0; i < table->size; i++) {
-        lv_array_deinit(table->overflow_list[i]);
+        if(table->overflow_list[i]) {
+            lv_array_deinit(table->overflow_list[i]);
+            lv_free(table->overflow_list[i]);
+        }
 
         lv_map_item_t * item = table->items[i];
         if(item != NULL)
