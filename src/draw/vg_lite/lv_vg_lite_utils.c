@@ -1427,6 +1427,42 @@ void lv_vg_lite_set_color_key(const lv_image_colorkey_t * colorkey)
     LV_VG_LITE_CHECK_ERROR(vg_lite_set_color_key(vg_colorkey), {});
 }
 
+uint8_t lv_vg_lite_get_stride_alignment(lv_color_format_t color_format)
+{
+    uint8_t align_bytes = LV_COLOR_DEPTH / 8 * 16; /*16 pixels*/
+
+    switch(color_format) {
+        case LV_COLOR_FORMAT_I1:
+        case LV_COLOR_FORMAT_I2:
+        case LV_COLOR_FORMAT_I4:
+        case LV_COLOR_FORMAT_A4:
+            align_bytes = 8;
+            break;
+        case LV_COLOR_FORMAT_I8:
+        case LV_COLOR_FORMAT_A8:
+        case LV_COLOR_FORMAT_L8:
+            align_bytes = 16;
+            break;
+        case LV_COLOR_FORMAT_RGB565:
+            align_bytes = 32;
+            break;
+        case LV_COLOR_FORMAT_ARGB8565:
+        case LV_COLOR_FORMAT_RGB888:
+            align_bytes = 48;
+            break;
+        case LV_COLOR_FORMAT_ARGB8888:
+        case LV_COLOR_FORMAT_XRGB8888:
+            align_bytes = 64;
+            break;
+
+        default:
+            LV_ASSERT_MSG(false, "Unsupported buffer format.");
+            break;
+    }
+
+    return align_bytes;
+}
+
 /**********************
  *   STATIC FUNCTIONS
  **********************/

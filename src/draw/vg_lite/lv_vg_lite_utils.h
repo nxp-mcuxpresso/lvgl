@@ -294,6 +294,8 @@ static inline void lv_vg_lite_blit_rect(vg_lite_buffer_t * target,
 }
 void lv_vg_lite_set_color_key(const lv_image_colorkey_t * colorkey);
 
+uint8_t lv_vg_lite_get_stride_alignment(lv_color_format_t color_format);
+
 static inline void lv_vg_lite_clear(vg_lite_buffer_t * target, const lv_area_t * area, vg_lite_color_t color)
 {
     vg_lite_rectangle_t rect;
