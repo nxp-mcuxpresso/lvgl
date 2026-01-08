@@ -1,0 +1,118 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-01-08T03:46:53Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.26"
+  },
+  "name": "lvgl-v26.03.00-pvw1",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/47950e1c-cebb-4be8-b981-ff7d09af28ff",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-47950e1c-cebb-4be8-b981-ff7d09af28ff",
+      "name": "lvgl",
+      "versionInfo": "v26.03.00-pvw1",
+      "licenseConcluded": "(MIT)",
+      "licenseDeclared": "(MIT)",
+      "downloadLocation": "https://github.com/nxp-mcuxpresso/lvgl",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-f080e95e-bf7d-48ce-ab8a-03685373e45f",
+      "name": "jQuery",
+      "versionInfo": "3.6.0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "homepage": "http://jquery.com/",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: oracle",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "8c81a828-f412-474c-918a-36d813af51fe",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:github_package:components\\/jquery:3.6.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:jquery:jquery:3.6.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:jquery:jquery:3.6:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:maven_package:org.webjars.npm\\:jquery:3.6.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:nodejs_package:jquery:3.6.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:rpm/oracle/js-jquery@3.6.0-1.el8?arch=noarch",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-48d4b64e-7417-45f9-8ace-720208f61329",
+      "name": "lvgl/lvgl",
+      "versionInfo": "v9.4.0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "homepage": "https://github.com/lvgl/lvgl",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: lvgl",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "23d16158-9980-4fe1-ab11-717c84d4e6ef",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/lvgl/lvgl@v9.4.0",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-47950e1c-cebb-4be8-b981-ff7d09af28ff"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-47950e1c-cebb-4be8-b981-ff7d09af28ff",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-48d4b64e-7417-45f9-8ace-720208f61329"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-47950e1c-cebb-4be8-b981-ff7d09af28ff",
+      "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-package-f080e95e-bf7d-48ce-ab8a-03685373e45f"
+    }
+  ]
+}
