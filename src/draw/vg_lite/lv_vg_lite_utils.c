@@ -158,7 +158,6 @@ const char * lv_vg_lite_error_string(vg_lite_error_t error)
             VG_LITE_ENUM_TO_STRING(ALREADY_EXISTS);
             VG_LITE_ENUM_TO_STRING(NOT_ALIGNED);
             VG_LITE_ENUM_TO_STRING(FLEXA_TIME_OUT);
-            VG_LITE_ENUM_TO_STRING(FLEXA_HANDSHAKE_FAIL);
         default:
             break;
     }
